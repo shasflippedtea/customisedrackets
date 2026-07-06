@@ -14,16 +14,27 @@ body {
   width: fit-content;
 }
 
-.brand-btn {
-  width: 120px;
-  height: 80px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+.brand-button {
+  width: 160px;
+  height: 100px;
+  border: 1px solid #525252;
+  border-radius: 20px;
   background: white;
   cursor: pointer;
   font-size: 16px;
 }
 
-.brand-btn:hover {
+.brand-button:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.brand-button img {
+  width: 120px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.enlarged {
+  width: 140px;
+
 }
