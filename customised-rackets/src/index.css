@@ -1,0 +1,29 @@
+body {
+  background-color: #dcdcdc;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: fit-content;
+}
+
+.brand-btn {
+  width: 120px;
+  height: 80px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.brand-btn:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
