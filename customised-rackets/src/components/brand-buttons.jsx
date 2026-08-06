@@ -10,42 +10,42 @@ export default function brandButtons() {
 
     if (selected === 'Yonex') {
         return (
-        <div className="brand-grid">
-            <button classname="brand-button" onClick={() => setSelected(null)}>Go Back</button>
-            <button classname="brand-button">Astrox</button>
-            <button classname="brand-button">Arcsaber</button>
-            <button classname="brand-button">Nanoflare</button>
+        <div className="series-grids">
+            <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
+            <button className="series-button">Astrox</button>
+            <button className="series-button">Arcsaber</button>
+            <button className="series-button">Nanoflare</button>
         </div>
         
     );
     }
     if (selected === 'Victor') {
         return (
-            <div className="brand-grid">
-                <button classname="brand-button" onClick={() => setSelected(null)}>Go Back</button>
-                <button classname="brand-button">Thruster</button>
-                <button classname="brand-button">Auraspeed</button>
-                <button classname="brand-button">DriveX</button>
+            <div className="series-grids">
+                <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
+                <button className="series-button">Thruster</button>
+                <button className="series-button">Auraspeed</button>
+                <button className="series-button">DriveX</button>
             </div>
         );
     }
     if (selected === 'Li Ning') {
         return (
-            <div className="brand-grid">
-                <button classname="brand-button" onClick={() => setSelected(null)}>Go Back</button>
-                <button classname="brand-button">AxForce</button>
-                <button classname="brand-button">Halbertec</button>
-                <button classname="brand-button">BladeX</button>
+            <div className="series-grids">
+                <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
+                <button className="series-button">AxForce</button>
+                <button className="series-button">Halbertec</button>
+                <button className="series-button">BladeX</button>
             </div>
         );
     }
     if (selected === 'Apacs') {
         return (
-            <div className="brand-grid">
-                <button classname="brand-button" onClick={() => setSelected(null)}>Go Back</button>
-                <button classname="brand-button">Head-Heavy</button>
-                <button classname="brand-button">Head-Balance</button>
-                <button classname="brand-button">Head-Light</button>
+            <div className="series-grids">
+                <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
+                <button className="series-button">Head-Heavy</button>
+                <button className="series-button">Head-Balance</button>
+                <button className="series-button">Head-Light</button>
             </div>
         );
     }   
