@@ -14,7 +14,9 @@ function RacketViewer() {
         const scene = new THREE.Scene();
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000,);
-        camera.position.z = 10;
+        camera.position.x = 0;
+        camera.position.y = 5;
+        camera.position.z = 5;
 
 
         const renderer = new THREE.WebGLRenderer(); // sizing the render 
@@ -23,11 +25,13 @@ function RacketViewer() {
         renderer.setClearColor(0x000000, 0); // Transparent background
 
         const controls = new OrbitControls(camera, renderer.domElement);
+        controls.target.set(0, 4, 0);
+        controls.update();
 
         const loader = new OBJLoader(); // To load the model file
         loader.load('public/models/RakatANDString.obj', (object) => {
             scene.add(object);
-            object.scale.set(3,3,3);
+            object.scale.set(3, 2.5, 2.5);
             object.position.set(0, -4, 0);
             console.log(object.position);
             console.log(object);
