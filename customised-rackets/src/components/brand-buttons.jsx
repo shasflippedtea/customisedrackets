@@ -7,14 +7,53 @@ import apacs from '../assets/apacslogo.jpeg';
 
 export default function brandButtons() {
     const [selected, setSelected] = useState(null)
+    const [selectedSeries, setSelectedSeries] = useState(null)
+
+
+    // Astrox Series
+    if (selected === 'Yonex' && selectedSeries === 'Astrox') {
+        return (
+            <div className="series-grids">
+                <button className="series-button" onClick={() => setSelectedSeries(null)}>Go Back</button>
+                <button className="series-button">Astrox 99 Pro</button>
+                <button className="series-button">Astrox 88D Pro</button>
+                <button className="series-button">Astrox 77</button>
+            </div>
+        );
+    }
+
+    // Arcsaber Series
+    if (selected === 'Yonex' && selectedSeries === 'Arcsaber') {
+        return (
+            <div className="series-grids">
+                <button className="series-button" onClick={() => setSelectedSeries(null)}>Go Back</button>
+                <button className="series-button">Arcsaber 11 Pro</button>
+                <button className="series-button">Arcsaber 7 Pro</button>
+            </div>
+        );
+    }
+
+    // Nanoflare Series
+    if (selected === 'Yonex' && selectedSeries === 'Nanoflare') {
+        return (
+            <div className="series-grids">
+                <button className="series-button" onClick={() => setSelectedSeries(null)}>Go Back</button>
+                <button className="series-button">Nanoflare 1000Z </button>
+                <button className="series-button">Nanoflare 800 Pro</button>
+                <button className="series-button">Nanoflare 700 Pro</button>
+            </div>
+        );
+    }
+
+
 
     if (selected === 'Yonex') {
         return (
         <div className="series-grids">
-            <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
-            <button className="series-button">Astrox</button>
-            <button className="series-button">Arcsaber</button>
-            <button className="series-button">Nanoflare</button>
+            <button className="series-button" onClick={() => setSelected(null) }>Go Back</button>
+            <button className="series-button" onClick={() => setSelectedSeries('Astrox')}>Astrox</button>
+            <button className="series-button" onClick={() => setSelectedSeries('Arcsaber')}>Arcsaber</button>
+            <button className="series-button" onClick={() => setSelectedSeries('Nanoflare')}>Nanoflare</button>
         </div>
         
     );
@@ -49,6 +88,9 @@ export default function brandButtons() {
             </div>
         );
     }   
+
+
+
 
 
     return (
