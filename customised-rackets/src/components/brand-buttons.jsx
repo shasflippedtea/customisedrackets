@@ -9,7 +9,47 @@ export default function brandButtons() {
     const [selected, setSelected] = useState(null)
     const [selectedSeries, setSelectedSeries] = useState(null)
 
+    const brands = {
+        Yonex: {
+            Astrox: ['Astrox 99 Pro', 'Astrox 88D Pro', 'Astrox 77 Pro'],
+            Arcsaber: ['Arcsaber 11 Pro', 'Arcsaber 7 Pro'],
+            Nanoflare: ['Nanoflare 1000z', 'Nanoflare 800 Pro', 'Nanoflare 700 Pro']
+        },
+        Victor: {
+            Thruster: ['Thruster Ryuga'],
+            Auraspeed: [],
+            DriveX: [],
 
+        }
+    }
+
+    if (selected && selectedSeries) {
+        return(
+            <div classname= "series-grid">
+            <button className="series-button" onClick={() => setSelectedSeries(null)}>Go Back</button>
+            {brands[selected][selectedSeries].map((racket) => (
+                <button classname= "series-button" key={racket}> {racket} </button>
+            ))}
+            </div>
+        );
+    }
+
+    if (selected) {
+        return (
+        <div className="series-grids">
+            <button className="series-button" onClick={() => { setSelected(null); setSelectedSeries(null); }}>Go Back</button>
+            {Object.keys(brands[selected]).map((seriesName) => (
+            <button className="series-button" key={seriesName} onClick={() => setSelectedSeries(seriesName)}> {seriesName} </button>
+
+        ))}
+        
+        </div>
+    
+    );
+
+}
+
+    // YONEX RACKET SERIES 
     // Astrox Series
     if (selected === 'Yonex' && selectedSeries === 'Astrox') {
         return (
@@ -46,7 +86,11 @@ export default function brandButtons() {
     }
 
 
+    // VICTOR RACKET SERIES
 
+
+
+    //Brand Buttons
     if (selected === 'Yonex') {
         return (
         <div className="series-grids">
@@ -62,9 +106,9 @@ export default function brandButtons() {
         return (
             <div className="series-grids">
                 <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
-                <button className="series-button">Thruster</button>
-                <button className="series-button">Auraspeed</button>
-                <button className="series-button">DriveX</button>
+                <button className="series-button" onClick={() => setSelectedSeries('Thruster')}>Thruster</button>
+                <button className="series-button" onClick={() => setSelectedSeries('Auraspeed')}>Auraspeed</button>
+                <button className="series-button" onClick={() => setSelectedSeries('DriveX')}>DriveX</button>
             </div>
         );
     }
@@ -72,9 +116,9 @@ export default function brandButtons() {
         return (
             <div className="series-grids">
                 <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
-                <button className="series-button">AxForce</button>
-                <button className="series-button">Halbertec</button>
-                <button className="series-button">BladeX</button>
+                <button className="series-button" onClick={() => setSelectedSeries('AxForce')}>AxForce</button>
+                <button className="series-button" onClick={() => setSelectedSeries('Halbertec')}>Halbertec</button>
+                <button className="series-button" onClick={() => setSelectedSeries('BladeX')}>BladeX</button>
             </div>
         );
     }
@@ -82,17 +126,15 @@ export default function brandButtons() {
         return (
             <div className="series-grids">
                 <button className="series-button" onClick={() => setSelected(null)}>Go Back</button>
-                <button className="series-button">Head-Heavy</button>
-                <button className="series-button">Head-Balance</button>
-                <button className="series-button">Head-Light</button>
+                <button className="series-button" onClick={() => setSelectedSeries('Head-Heavy')}>Head-Heavy</button>
+                <button className="series-button" onClick={() => setSelectedSeries('Head-Balance')}>Head-Balance</button>
+                <button className="series-button" onClick={() => setSelectedSeries('Head-Light')}>Head-Light</button>
             </div>
         );
     }   
 
 
-
-
-
+    // Branded Logo Buttons
     return (
         <div className="brand-grid">
             <button className="brand-button" onClick={() => setSelected('Yonex')}>
