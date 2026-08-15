@@ -21,16 +21,6 @@ export default function brandButtons() {
             DriveX: ['DX12', 'DX10 Metallic', 'DX 9X'],
 
         },
-        LiNing:  {
-            AxForce: ['AxF100', 'AxF90', 'AxF80', 'AxF70','AxF60', 'Cannon'],
-            Halbertec: ['9000','8000', '6000', '5000'],
-            BladeX: ['900 Max', '800 ', '700', ],
-        },
-        Apacs: {
-            HeadHeavy: [],
-            HeadBalance: [],
-            HeadLight: [],
-        }
     }
 
     if (selected && selectedSeries) {
@@ -69,10 +59,10 @@ export default function brandButtons() {
             <button className="brand-button" onClick={() => setSelected('Victor')}>
                 <img src={victor} alt="Victor" className={selected === 'Victor' ? 'enlarged' : ''} />
             </button>
-            <button className="brand-button" onClick={() => setSelected('LiNing')}>
+            <button className="brand-button">
                 <img src={lining} alt="Li Ning" className={selected === 'Li Ning' ? 'enlarged' : ''} />
             </button>
-            <button className="brand-button" onClick={() => setSelected('Apacs')}>
+            <button className="brand-button">
                 <img src={apacs} alt="Apacs" className={selected === 'Apacs' ? 'enlarged' : ''} />
             </button>
 

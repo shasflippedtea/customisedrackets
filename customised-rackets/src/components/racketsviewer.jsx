@@ -4,14 +4,16 @@ import * as THREE from 'three';
 import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-function RacketViewer() {
+function RacketViewer({selectedModel}) {
     const mountRef = useRef(null);
+    const sceneRef = useRef(null);
     
     useEffect(() => {
 
         if (mountRef.current.children.length > 0) return; 
 
         const scene = new THREE.Scene();
+        sceneRef.current = scene;
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000,);
         camera.position.x = 0;
@@ -49,6 +51,26 @@ function RacketViewer() {
 
     }, 
     []);
+
+    useEffect(() => {
+        if (!sceneRef.current) return;
+
+        while(sceneRef.current.children.length > 0){
+            sceneRef.current.remove(sceneRef.current.children[0]);
+        }
+        
+        const loader = new OBJLoader();
+        const modelFile = selectedModel === 'Arcsaber 7 Pro'
+        ? 'public/models/Arcsaber7pro.obj'
+        : 'public/models/RakatANDString.obj'
+
+        loader.load(modelFile, (object) => {
+            object.scale.set(3, 2.5, 2.5);
+            object.position.set(0, -4, 0);
+            sceneRef.current.add(object);
+        });
+
+    }, [selectedModel]);
 
     return (
         <div ref={mountRef} style={{ width: '50vw', height: '100vh'}} />
