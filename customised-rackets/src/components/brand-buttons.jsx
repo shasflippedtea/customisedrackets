@@ -5,10 +5,11 @@ import lining from '../assets/lininglogo.jpg';
 import apacs from '../assets/apacslogo.jpeg';
 
 
-export default function brandButtons() {
+export default function brandButtons( {setSelectedModel} ) {
     const [selected, setSelected] = useState(null)
     const [selectedSeries, setSelectedSeries] = useState(null)
 
+    // Racket type 
     const brands = {
         Yonex: {
             Astrox: ['Astrox 99 Pro', 'Astrox 88D Pro', 'Astrox 77 Pro'],
@@ -23,12 +24,13 @@ export default function brandButtons() {
         },
     }
 
+    // Button to select the racket type
     if (selected && selectedSeries) {
         return(
             <div className= "series-grids">
             <button className="series-button" onClick={() => setSelectedSeries(null)}>Go Back</button>
             {brands[selected][selectedSeries].map((racket) => (
-                <button className= "series-button" key={racket}> {racket} </button>
+                <button className= "series-button" key={racket} onClick={() => setSelectedModel(racket)}> {racket} </button>
             ))}
             </div>
         );
@@ -47,7 +49,6 @@ export default function brandButtons() {
     );
 
 }
-
 
     // Branded Logo Buttons
     return (

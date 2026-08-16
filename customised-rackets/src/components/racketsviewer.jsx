@@ -1,12 +1,14 @@
 import react from 'react';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 
 function RacketViewer({selectedModel}) {
     const mountRef = useRef(null);
     const sceneRef = useRef(null);
+    const modelRef = useRef(null);
     
     useEffect(() => {
 
@@ -53,23 +55,43 @@ function RacketViewer({selectedModel}) {
     []);
 
     useEffect(() => {
+        console.log('selectedModel changed:', selectedModel)
         if (!sceneRef.current) return;
 
-        while(sceneRef.current.children.length > 0){
-            sceneRef.current.remove(sceneRef.current.children[0]);
-        }
-        
-        const loader = new OBJLoader();
-        const modelFile = selectedModel === 'Arcsaber 7 Pro'
-        ? 'public/models/Arcsaber7pro.obj'
-        : 'public/models/RakatANDString.obj'
+        if (modelRef.current) {
+            sceneRef.current.remove(modelRef.current);
 
+        }
+
+        const modelFile = selectedModel === 'Arcsaber 7 Pro' ? 'models/Arcsaber7pro.obj' : 'models/RakatANDString.obj';
+        const material = selectedModel === 'Arcsaber 7 Pro' ? 'models/Arcsaber7pro.mtl' : null;
+
+        if (material) {
+            const mtlLoader = new MTLLoader();
+            mtlLoader.load(material, (mats) => {
+            console.log('MTL loaded');
+            mats.preload();
+
+            const objLoader = new OBJLoader();
+            console.log('OBJ loaded');
+            objLoader.setMaterials(mats);
+            objLoader.load(modelFile, (object) => {
+            object.scale.set(3, 2.5, 2.5);
+            object.position.set(0, -4, 0);
+            sceneRef.current.add(object);
+            modelRef.current = object;
+        })
+      })
+  
+    } else { 
+        const loader = new OBJLoader();
         loader.load(modelFile, (object) => {
             object.scale.set(3, 2.5, 2.5);
             object.position.set(0, -4, 0);
             sceneRef.current.add(object);
-        });
+        })
 
+    }
     }, [selectedModel]);
 
     return (
